@@ -61,6 +61,23 @@ android {
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+         externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+}
     }
 
     signingConfigs {
