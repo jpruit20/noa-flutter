@@ -8,10 +8,15 @@ import 'package:noa/pages/splash.dart';
 import 'package:noa/util/app_log.dart';
 import 'package:noa/util/foreground_service.dart';
 import 'package:noa/util/location.dart';
+import 'whisper_caption_service.dart;
 
 final globalPageStorageBucket = PageStorageBucket();
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final whisper = WhisperCaptionService();
+  whisper.start(); // launch captioning loop
+  runApp(MyApp());
   // Load environment variables
   await dotenv.load();
 
